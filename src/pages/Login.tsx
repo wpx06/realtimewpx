@@ -57,8 +57,6 @@ const Login = () => {
           <CardDescription className="text-center">
             Welcome Back
           </CardDescription>
-          <div class="mb-5 text-center lg:text-left">
-            <h2 class="mb-2 text-xl font-medium uppercase dark:text-white lg:text-2xl tracking-wider">Welcome Back!</h2>
             <p class="text-sm text-gray-600 dark:text-gray-300">Please login to access your dashboard</p></div>
         </CardHeader>
         <form onSubmit={handleSubmit}>
