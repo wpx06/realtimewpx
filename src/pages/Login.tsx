@@ -57,8 +57,10 @@ const Login = () => {
           <CardDescription className="text-center">
             Welcome Back
           </CardDescription>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Please login to access your dashboard</p></div>
-        </CardHeader>
+          <CardDescription className="text-center">
+            Please login to access your dashboard
+          </CardDescription>
+         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
