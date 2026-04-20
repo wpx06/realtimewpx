@@ -209,7 +209,7 @@ const LivePerforms = () => {
                         </span>
                       </TableCell>
                       <TableCell className="py-1 px-2">
-                        <Badge variant="secondary">{conversion.subid}</Badge>
+                        <Badge variant="secondary">{conversion.sub_source}</Badge>
                       </TableCell>
                     </TableRow>
                   ))
