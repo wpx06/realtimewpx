@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,8 @@ const LivePerforms = () => {
   const [liveClicks, setLiveClicks] = useState<VisitData[]>([]);
   const [liveConversions, setLiveConversions] = useState<ConversionData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const prevConversionsCount = useRef(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +23,14 @@ const LivePerforms = () => {
         ]);
         setLiveClicks(clicks);
         setLiveConversions(conversions);
+        // Play sound if new conversion detected
+        if (
+          prevConversionsCount.current !== 0 &&
+          conversions.length > prevConversionsCount.current
+        ) {
+          audioRef.current?.play();
+        }
+        prevConversionsCount.current = conversions.length;
       } catch (error) {
         console.error('Error fetching live data:', error);
       } finally {
@@ -57,6 +67,7 @@ const LivePerforms = () => {
 
   return (
     <div className="space-y-6">
+      <audio ref={audioRef} src="/dana.mp3" preload="auto" />
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Live Performs</h1>
         <div className="flex items-center space-x-2">
@@ -106,10 +117,13 @@ const LivePerforms = () => {
                         </Badge>
                       </TableCell>
                       <TableCell className="py-1 px-2">
-                        <CountryFlag 
-                          countryCode={click.country} 
-                          className="w-5 h-4"
-                        />
+                        <div className="flex items-center gap-2">
+                          <CountryFlag 
+                            countryCode={click.country} 
+                            className="w-5 h-4"
+                          />
+                          <span className="text-xs text-muted-foreground font-mono">{click.country}</span>
+                        </div>
                       </TableCell>
                       <TableCell className="py-1 px-2">
                         <img 
@@ -209,7 +223,7 @@ const LivePerforms = () => {
                         </span>
                       </TableCell>
                       <TableCell className="py-1 px-2">
-                        <Badge variant="secondary">{conversion.sub_source}</Badge>
+                        <Badge variant="secondary">{conversion.subid}</Badge>
                       </TableCell>
                     </TableRow>
                   ))
