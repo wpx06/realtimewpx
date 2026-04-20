@@ -72,11 +72,13 @@ class MySQLApiService {
   }
 
   getCountryFlag(countryCode: string): string {
-    const flags: { [key: string]: string } = {
-      'US': '🇺🇸', 'GB': '🇬🇧', 'DE': '🇩🇪', 'FR': '🇫🇷', 'IT': '🇮🇹',
-      'ES': '🇪🇸', 'CA': '🇨🇦', 'AU': '🇦🇺', 'JP': '🇯🇵', 'BR': '🇧🇷'
-    };
-    return flags[countryCode] || '🌍';
+    if (!countryCode) return '🌍';
+    const code = countryCode.toUpperCase();
+    if (code.length !== 2) return '🌍';
+    return String.fromCodePoint(
+      127397 + code.charCodeAt(0),
+      127397 + code.charCodeAt(1)
+    );
   }
 
   getOSIcon(os: string): string {
