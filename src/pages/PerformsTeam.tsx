@@ -10,21 +10,25 @@ import { TeamPerformance, CountryBreakdown } from '@/types';
 import { format, startOfWeek, endOfWeek, subDays, startOfMonth, endOfMonth, subMonths } from 'date-fns';
 import { CountryFlag } from '@/components/CountryFlag';
 
-function getTodayUTCString() {
+const getTodayUTCString = () => {
   const now = new Date();
   return now.toISOString().slice(0, 10); // yyyy-mm-dd
-}
+};
 
 const PerformsTeam = () => {
   const [teamData, setTeamData] = useState<TeamPerformance[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
-  const [startDate, setStartDate] = useState(format(startOfWeek(new Date(), { weekStartsOn: 1 }), 'yyyy-MM-dd'));
-  const [endDate, setEndDate] = useState(format(endOfWeek(new Date(), { weekStartsOn: 1 }), 'yyyy-MM-dd'));
-  const [preset, setPreset] = useState('thisweek');
+  const [startDate, setStartDate] = useState(getTodayUTCString());
+  const [endDate, setEndDate] = useState(getTodayUTCString());
+  const [preset, setPreset] = useState('today');
   const [showSummary, setShowSummary] = useState(false);
 
   useEffect(() => {
+    setPreset('today');
+    const todayUTCString = getTodayUTCString();
+    setStartDate(todayUTCString);
+    setEndDate(todayUTCString);
     fetchTeamData();
   }, []);
 
