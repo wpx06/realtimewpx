@@ -211,7 +211,7 @@ const Conversions = () => {
                           {format(new Date(conversion.time), 'yyyy-MM-dd HH:mm:ss')}
                         </TableCell>
                         <TableCell>
-                          <Badge variant="secondary">{conversion.subid}</Badge>
+                          <Badge variant="secondary">{conversion.sub_source}</Badge>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center space-x-2">
