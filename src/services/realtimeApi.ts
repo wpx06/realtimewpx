@@ -17,7 +17,7 @@ const countries = [
 
 const osTypes = ['Windows', 'MacOS', 'Android', 'iOS', 'Linux'];
 const referrerTypes = ['Facebook', 'Instagram', 'Threads', 'X', 'Direct'];
-const subIds = ['sub001', 'sub002', 'sub003', 'sub004', 'sub005', 'sub006', 'sub007', 'sub008'];
+const sub_source = ['sub001', 'sub002', 'sub003', 'sub004', 'sub005', 'sub006', 'sub007', 'sub008'];
 
 // Storage for live data (max 10 items each)
 let liveClicks: VisitData[] = [];
@@ -31,12 +31,12 @@ const generateRandomVisit = (): VisitData => {
   const country = countries[Math.floor(Math.random() * countries.length)];
   const os = osTypes[Math.floor(Math.random() * osTypes.length)];
   const referrer = referrerTypes[Math.floor(Math.random() * referrerTypes.length)];
-  const subId = subIds[Math.floor(Math.random() * subIds.length)];
+  const sub_source = sub_source[Math.floor(Math.random() * sub_source.length)];
   
   return {
     id: Math.random().toString(36).substr(2, 9),
     timestamp: new Date().toISOString(),
-    subsource: subId,
+    subsource: sub_source,
     ip: generateRandomIP(),
     country: country.code,
     user_agent: os,
@@ -46,13 +46,13 @@ const generateRandomVisit = (): VisitData => {
 
 const generateRandomConversion = (): ConversionData => {
   const country = countries[Math.floor(Math.random() * countries.length)];
-  const subId = subIds[Math.floor(Math.random() * subIds.length)];
+  const sub_source = sub_source[Math.floor(Math.random() * sub_source.length)];
   const payout = (Math.random() * 10 + 0.5).toFixed(2);
   
   return {
     id: Math.random().toString(36).substr(2, 9),
     time: new Date().toISOString(),
-    subid: subId,
+    sub_source: sub_source,
     payout: payout,
     country: country.code,
   };
