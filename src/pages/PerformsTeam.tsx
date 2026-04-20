@@ -172,7 +172,7 @@ const PerformsTeam = () => {
               <div className="text-2xl font-bold text-green-600 dark:text-green-400">
                 ${safeTeamData.reduce((sum, team) => sum + (Number(team.earnings) || 0), 0).toFixed(2)}
               </div>
-              <div className="text-sm text-muted-foreground">This week</div>
+              <div className="text-sm text-muted-foreground">Today</div>
             </CardContent>
           </Card>
 
