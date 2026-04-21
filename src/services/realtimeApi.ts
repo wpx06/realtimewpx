@@ -114,7 +114,7 @@ export const realtimeApi = {
     try {
       const response = await fetch('https://re.newbiee.my.id/api/get_conversions.php');
       if (!response.ok) {
-        throw new Error('Failed to fetch live conversions');
+        throw new Error('Failed to fetch live conversions, conversionsLP');
       }
       const data = await response.json();
       return data.map((item: any) => ({
