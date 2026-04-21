@@ -26,7 +26,7 @@ export const tableSchemas = {
       subid VARCHAR(50),
       payout DECIMAL(10,2),
       country VARCHAR(2),
-      network VARCHAR(50) DEFAULT 'LOSPOLLOS',
+      network VARCHAR(50) DEFAULT 'TRAFEE',
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `,
