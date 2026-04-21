@@ -30,6 +30,17 @@ export const tableSchemas = {
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `,
+  conversionsLP: `
+    CREATE TABLE IF NOT EXISTS conversions (
+      id VARCHAR(36) PRIMARY KEY,
+      time DATETIME DEFAULT CURRENT_TIMESTAMP,
+      subid VARCHAR(50),
+      payout DECIMAL(10,2),
+      country VARCHAR(2),
+      network VARCHAR(50) DEFAULT 'LOSPOLLOS',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `,
   stats_summary: `
     CREATE TABLE IF NOT EXISTS stats_summary (
       id INT AUTO_INCREMENT PRIMARY KEY,
