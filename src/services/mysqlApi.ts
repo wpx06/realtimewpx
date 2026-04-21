@@ -66,7 +66,7 @@ class MySQLApiService {
       const response = await fetch(`https://re.newbiee.my.id/api/conversions_json.php?start=${startDate}&end=${endDate}`);
       return await response.json();
     } catch (error) {
-      console.error('Error fetching conversions by date:', error);
+      console.error('Error fetching conversions, conversionsLP by date:', error);
       return [];
     }
   }
