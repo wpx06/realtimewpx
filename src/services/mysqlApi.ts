@@ -21,7 +21,7 @@ class MySQLApiService {
       const response = await fetch('https://re.newbiee.my.id/api/get_conversions.php');
       return await response.json();
     } catch (error) {
-      console.error('Error fetching live conversions:', error);
+      console.error('Error fetching live conversions, conversionsLP:', error);
       return [];
     }
   }
