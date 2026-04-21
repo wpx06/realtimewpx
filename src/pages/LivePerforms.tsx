@@ -209,7 +209,7 @@ const LivePerforms = () => {
                         {formatTime(conversion.time)}
                       </TableCell>
                       <TableCell className="py-1 px-2">
-                        <Badge variant="outline">LOSPOLLOS</Badge>
+                        <Badge variant="outline">{conversion.network}</Badge>
                       </TableCell>
                       <TableCell className="py-1 px-2">
                         <CountryFlag 
